@@ -1,0 +1,38 @@
+<project name="bldprc" basedir="." default="package">
+<target name="clean">
+<echo message="delete file"/>
+<delete dir="D:/docomo"/>
+</target>
+
+
+<target name="create" depends="clean">
+<echo message="create directory stucture"/>
+<mkdir dir="D:/idea/conf"/>
+<mkdir dir="D:/idea/java"/>
+<mkdir dir="D:/idea/db"/>
+<mkdir dir="D:/idea/lib"/>
+<mkdir dir="D:/idea/log"/>
+<mkdir dir="D:/idea/tmp"/>
+<mkdir dir="D:/idea/bin"/>
+</target>
+
+
+<target name="copy" depends="create">
+<echo message="copy file to tata folder"/>
+<copy file="D:\antp\hi.java" tofile="D:\idea\bin\hi.java"/>
+</target>
+
+
+<target name="compile" depends="copy">
+<echo message="compile code"/>
+<javac srcdir="D:/antp" destdir="D:/idea/bin" includeantruntime="false"/>
+</target>
+
+
+<target name="package" depends="compile">
+<zip zipfile="D:\output.zip" basedir="D:\idea"/>
+<jar jarfile="D:\output.jar" basedir="D:\idea"/>
+</target>
+
+
+</project>
